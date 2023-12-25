@@ -3,29 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gold Calculator</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
-
+  <title>Gold Calculator Landing Page</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    #landing {
+      text-align: center;
+    }
+    button {
+      padding: 15px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-  <div id="calculator">
-    <h2>Gold Calculator</h2>
-    <label for="weight">Weight of 18k gold:</label>
-    <input type="text" id="weight" placeholder="Enter weight">
-    <label for="unit">Unit:</label>
-    <select id="unit">
-      <option value="grams">Grams</option>
-      <option value="kilograms">Kilograms</option>
-    </select>
-    <br>
-    <button onclick="calculate()">Calculate</button>
-    <br>
-    <label for="pureGoldWeight">Pure Gold Weight:</label>
-    <input type="text" id="pureGoldWeight" readonly>
-    <br>
-    <label for="alloyWeight">Alloy Weight:</label>
-    <input type="text" id="alloyWeight" readonly>
+  <div id="landing">
+    <h2>Welcome to the Gold Calculator</h2>
+    <a href="calculator.html"><button><b>Calculate 18K Gold</b></button></a>
+
+    <a href="calculator24k.html"><button style="
+      background-color: #FFD700;
+      color: #000000;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    "><b>Calculate 24K Gold</b></button></a>
   </div>
 
 </body>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24K to 18K Gold Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div id="calculator">
+    <h2>24K Gold Calculator</h2>
+    <label for="weight">Weight of 24-karat gold:</label>
+    <input type="text" id="weight" placeholder="Enter weight">
+    <label for="unit">Unit:</label>
+    <select id="unit">
+      <option value="g">Grams (g)</option>
+      <option value="kg">Kilograms (kg)</option>
+    </select>
+    <button class="btn2" onclick="calculate()"><b>Calculate</b></button>
+    <br>
+    <label for="result">18-karat Gold Weight:</label>
+    <input type="text" id="result" readonly>
+    <br>
+    <label for="alloyResult">Alloy Weight:</label>
+    <input type="text" id="alloyResult" readonly>
+  </div>
+
+  <script>
+    function calculate() {
+      // Your calculation logic for 24K to 18K conversion here
+      const weightOf24KaratGold = parseFloat(document.getElementById('weight').value);
+      const unit = document.getElementById('unit').value;
+
+      if (isNaN(weightOf24KaratGold)) {
+        alert('Please enter a valid weight.');
+        return;
+      }
+
+      // Convert to grams if the unit is in kilograms
+      const weightInGrams = unit === 'kg' ? weightOf24KaratGold * 1000 : weightOf24KaratGold;
+
+      const goldWeight18Karat = (weightInGrams * 0.995) / 0.7515;
+
+      // Convert gold weight to kilograms if the unit is in kilograms
+      const goldWeightResult = unit === 'kg' ? goldWeight18Karat / 1000 : goldWeight18Karat;
+      document.getElementById('result').value = goldWeightResult.toFixed(2) + ' ' + unit;
+
+      // Calculate Alloy automatically
+      const inputWeight = weightInGrams;
+      const outputWeight = goldWeight18Karat;
+
+      const alloyWeight = outputWeight - inputWeight;
+
+      // Convert alloy weight to kilograms if the unit is in kilograms
+      const alloyWeightResult = unit === 'kg' ? alloyWeight / 1000 : alloyWeight;
+      document.getElementById('alloyResult').value = alloyWeightResult.toFixed(2) + ' ' + unit;
+    }
+  </script>
+    </body>
+    </html>

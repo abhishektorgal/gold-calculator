@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Calculator</title>
+  <link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+    <div id="calculator">
+        <h2>Gold Calculator</h2>
+        <label for="weight">Weight of 18-karat gold:</label>
+        <input type="text" id="weight" placeholder="Enter weight">
+        <label for="unit">Unit:</label>
+        <select id="unit">
+          <option value="g">Grams (g)</option>
+          <option value="kg">Kilograms (kg)</option>
+        </select>
+        <button onclick="calculate()">Calculate</button>
+        <br>
+        <label for="pureGoldWeight">24-karat Gold Weight:</label>
+        <!-- Add readonly attribute to prevent manual editing -->
+        <input type="text" id="pureGoldWeight" readonly onclick="copyToClipboard()">
+        <span id="copyMessage" style="display:none;">Copied!</span>
+        <br>
+    
+      </div>
+    
+      <script>
+        function calculate() {
+          // Your calculation logic for 18K to 24K conversion here
+          const weightOf18KaratGold = parseFloat(document.getElementById('weight').value);
+          const unit = document.getElementById('unit').value;
+    
+          if (isNaN(weightOf18KaratGold)) {
+            alert('Please enter a valid weight.');
+            return;
+          }
+    
+          // Convert to grams if the unit is in kilograms
+          const weightInGrams = unit === 'kg' ? weightOf18KaratGold * 1000 : weightOf18KaratGold;
+    
+          const pureGoldWeight = (weightInGrams * 0.7515) / 0.995;
+    
+          // Convert gold weight to kilograms if the unit is in kilograms
+          const pureGoldWeightResult = unit === 'kg' ? pureGoldWeight / 1000 : pureGoldWeight;
+          document.getElementById('pureGoldWeight').value = pureGoldWeightResult.toFixed(2) + ' ' + unit;
+    
+          // Calculate Alloy automatically
+          const inputWeight = weightInGrams;
+          const outputWeight = pureGoldWeight;
+    
+          const alloyWeight = outputWeight - inputWeight;
+    
+          // Convert alloy weight to kilograms if the unit is in kilograms
+          const alloyWeightResult = unit === 'kg' ? alloyWeight / 1000 : alloyWeight;
+          document.getElementById('alloyWeight').value = alloyWeightResult.toFixed(2) + ' ' + unit;
+        }
+
+        function copyToClipboard() {
+          // Select the text inside the input field
+          const inputField = document.getElementById('pureGoldWeight');
+          inputField.select();
+          inputField.setSelectionRange(0, 99999); // For mobile devices
+
+          // Copy the text to the clipboard
+          document.execCommand('copy');
+
+          // Deselect the input field
+          window.getSelection().removeAllRanges();
+
+          // Display the "Copied!" message for a brief moment
+          const copyMessage = document.getElementById('copyMessage');
+          copyMessage.style.display = 'inline';
+          setTimeout(function() {
+            copyMessage.style.display = 'none';
+          }, 1500); // 1500 milliseconds (1.5 seconds) timeout
+        }
+      </script>
+</body>
+</html>
