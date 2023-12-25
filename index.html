@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+
+</head>
+<body>
+  <div id="calculator">
+    <h2>Gold Calculator</h2>
+    <label for="weight">Weight of 18k gold:</label>
+    <input type="text" id="weight" placeholder="Enter weight">
+    <label for="unit">Unit:</label>
+    <select id="unit">
+      <option value="grams">Grams</option>
+      <option value="kilograms">Kilograms</option>
+    </select>
+    <br>
+    <button onclick="calculate()">Calculate</button>
+    <br>
+    <label for="pureGoldWeight">Pure Gold Weight:</label>
+    <input type="text" id="pureGoldWeight" readonly>
+    <br>
+    <label for="alloyWeight">Alloy Weight:</label>
+    <input type="text" id="alloyWeight" readonly>
+  </div>
+
+</body>
+</html>
