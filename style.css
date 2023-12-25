@@ -40,7 +40,7 @@ body {
   button:hover {
     background-color: #45a049;
   }
-  .btn2 {
+  btn2 {
     background-color: #FFD700;
     color: #000000;
     border: none;
@@ -48,7 +48,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  .btn2:hover {
+  btn2:hover {
     background-color: #FFD700;
   }
   input[readonly] {
